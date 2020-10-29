@@ -8,10 +8,11 @@ let APIKit = axios.create({
 
 export function getCurrentRepoCommits() {
 
-    APIKit.get('repos/bvajhi/GMAssessment/commits')
+    return APIKit.get('repos/bvajhi/GMAssessment/commits')
         .then(
             response => {
                 console.log(response);
+                return response;
             }
         )
         .catch (

@@ -5,7 +5,8 @@ import {
   Button,
 } from 'react-native';
 
-import { getCurrentRepoCommits } from './api/api'
+import { getCurrentRepoCommits } from './api/api';
+import {getData} from './actions/apiActions';
 
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -26,7 +27,7 @@ function App() {
 
       <Button 
         title="Make API call" 
-        onPress= {() => { getCurrentRepoCommits();}}
+        onPress= {() => { dispatch(getData())}}
       />
       
       </SafeAreaView>
