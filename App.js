@@ -19,7 +19,7 @@ function App() {
   const isLoading = useSelector (state => state.data.isLoading);
   const data = useSelector (state => state.data.dataArray);
 
-  const renderItem = ({item} )=> {
+  function renderItem ({item} ) {
 
     return(
       <>
@@ -29,7 +29,6 @@ function App() {
             {item.commitHash}
           </Text>
         </View>
-        
         <View style={{flexDirection: "row"}}>
           <Text>Commit message: </Text>
           <Text style={{flex: 1}}>
@@ -47,25 +46,42 @@ function App() {
     );
 
   }
-
+  function renderData (){
+  console.log("didFail: ", didFail);
+    if (didFail){
+      console.log("didFail: ", didFail);
+      return(
+        <>
+          <Text style={{ textAlign:'center'}}>
+            There was a problem loading data either thr Repo does not exist or is private.
+          </Text>
+        </>
+      );
+    }
+    else{
+      return(
+          <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.commitHash}
+        />
+      );
+    }
+  }
 
   return (
     <>
       <SafeAreaView>
-      <Button 
-        title="Make API call" 
-        onPress= {() => { 
-            dispatch(setIsLoading(true));
-            dispatch(getData());
+        <Button 
+          title="Make API call" 
+          onPress= {() => { 
+              dispatch(setIsLoading(true));
+              dispatch(getData());
+            }
           }
-        }
-       
-      />
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.commitHash}
-      />
+        
+        />
+        {renderData()}
       </SafeAreaView>
     </>
   );
