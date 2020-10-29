@@ -46,9 +46,7 @@ function App() {
 
   }
   function renderData (){
-  console.log("didFail: ", didFail);
     if (didFail) {
-      console.log("didFail: ", didFail);
       return(
         <>
           <Text style={{ textAlign:'center'}}>

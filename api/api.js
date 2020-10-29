@@ -11,7 +11,6 @@ export function getCurrentRepoCommits() {
     return APIKit.get('repos/bvajhi/GMAssessment/commits')
         .then(
             response => {
-                console.log(response);
                 response.data.forEach(element => {
                     const dataObj = {
                         commitHash: element.sha,
@@ -28,7 +27,6 @@ export function getCurrentRepoCommits() {
         )
         .catch (
             error => {
-                console.log(error);
                 return {
                     fail: true,
                 }
