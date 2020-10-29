@@ -1,7 +1,7 @@
-import { COUNTER_CHANGE } from '../constants';
+import CONST from '../constants';
     export function changeCount(count) {
         return {
-            type: COUNTER_CHANGE,
+            type: CONST.COUNTER_CHANGE,
             payload: count
         }
 }
