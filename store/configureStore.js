@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import countReducer from '../reducers/countReducer';
 import dataReducer from '../reducers/dataReducer'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers(
     { 
@@ -14,7 +15,7 @@ const rootReducer = combineReducers(
 const configureStore = () => {
     return createStore(
             rootReducer,
-            applyMiddleware(thunk)   
+            composeWithDevTools(applyMiddleware(thunk))
         );
 }
 export default configureStore;  
