@@ -20,6 +20,11 @@ export function getData (){
 
     };
 
+}
 
-
+export function setIsLoading (value){
+    return {
+        type: CONST.SET_IS_LOADING,
+        payload: value
+    }
 }

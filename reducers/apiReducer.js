@@ -2,7 +2,7 @@ import CONST from '../constants'
 
 const initialState = {
     isLoading: false,
-    isError: false, 
+    didFail: false, 
     dataArray: [],
 };
 const dataReducer = (state = initialState, action) => {
@@ -10,16 +10,23 @@ const dataReducer = (state = initialState, action) => {
         case CONST.GET_CURRENT_REPO_COMMITS:
            return {
                 isLoading: false,
-                isError: false,
+                didFail: false,
                 dataArray: action.payload,
             }
 
         case CONST.GET_CURRENT_REPO_COMMITS_FAIL:
            return {
                 isLoading: false,
-                isError: true,
+                didFail: true,
                 dataArray: [],
             }
+
+        case CONST.SET_IS_LOADING:
+
+            return{
+                ...state,
+                isLoading: action.payload,
+            }    
         default:
             return state;
     }
