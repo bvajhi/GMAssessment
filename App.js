@@ -3,6 +3,8 @@ import {
   SafeAreaView,
   Text,
   Button,
+  FlatList,
+  View
 } from 'react-native';
 
 import {getData, setIsLoading} from './actions/apiActions';
@@ -17,17 +19,28 @@ function App() {
   const isLoading = useSelector (state => state.data.isLoading);
   const data = useSelector (state => state.data.dataArray);
 
+  const renderItem = ({item} )=> {
+
+    return(
+      <>
+        <Text>
+          {item.commitHash}
+        </Text>
+        <Text>
+          {item.commitMessage}
+        </Text>
+        <Text>
+          {item.author}
+        </Text>
+      </>
+    );
+
+  }
+
 
   return (
     <>
       <SafeAreaView>
-      <Text>
-        {count}
-      </Text>
-      <Button 
-        title="increase count" 
-        onPress= {() => { dispatch(changeCount(count+1)) }}
-      />
       <Button 
         title="Make API call" 
         onPress= {() => { 
@@ -35,8 +48,13 @@ function App() {
             dispatch(getData());
           }
         }
+       
       />
-      
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.commitHash}
+      />
       </SafeAreaView>
     </>
   );
