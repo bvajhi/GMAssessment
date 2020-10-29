@@ -4,7 +4,7 @@ import {
   Text,
   Button,
   FlatList,
-  View
+  View,
 } from 'react-native';
 
 import {getData, setIsLoading} from './actions/apiActions';
@@ -48,7 +48,7 @@ function App() {
   }
   function renderData (){
   console.log("didFail: ", didFail);
-    if (didFail){
+    if (didFail) {
       console.log("didFail: ", didFail);
       return(
         <>
@@ -58,12 +58,12 @@ function App() {
         </>
       );
     }
-    else{
+    else {
       return(
           <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.commitHash}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.commitHash}
         />
       );
     }
