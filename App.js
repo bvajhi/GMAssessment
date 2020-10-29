@@ -9,7 +9,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 
 import { changeCount } from './actions/count'
-const App: () => React$Node = () => {
+function App() {
   const dispatch = useDispatch();
   const count = useSelector (state => state.count.count);
   return (
