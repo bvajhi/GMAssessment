@@ -23,15 +23,26 @@ function App() {
 
     return(
       <>
-        <Text>
-          {item.commitHash}
-        </Text>
-        <Text>
+        <View style={{ flexDirection: "row"}}>
+          <Text>Commit Hash: </Text>
+          <Text style={{flex: 1}} >
+            {item.commitHash}
+          </Text>
+        </View>
+        
+        <View style={{flexDirection: "row"}}>
+          <Text>Commit message: </Text>
+          <Text style={{flex: 1}}>
           {item.commitMessage}
         </Text>
-        <Text>
+        </View>
+        <View style={{flexDirection: "row"}}>
+          <Text>Author: </Text>
+          <Text style={{flex: 1}}>
           {item.author}
         </Text>
+        </View>
+        <View style={{borderBottomWidth:1}}/>
       </>
     );
 
