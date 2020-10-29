@@ -5,6 +5,7 @@ import {
   Button,
   FlatList,
   View,
+  StyleSheet,
 } from 'react-native';
 
 import {getData, setIsLoading} from './actions/apiActions';
@@ -14,29 +15,27 @@ import {useDispatch, useSelector} from 'react-redux';
 import { changeCount } from './actions/count'
 function App() {
   const dispatch = useDispatch();
-  const count = useSelector (state => state.count.count);
   const didFail = useSelector (state => state.data.didFail);
-  const isLoading = useSelector (state => state.data.isLoading);
   const data = useSelector (state => state.data.dataArray);
 
   function renderItem ({item} ) {
 
     return(
       <>
-        <View style={{ flexDirection: "row"}}>
-          <Text>Commit Hash: </Text>
+        <View style={styles.rowContainer}>
+          <Text style={styles.rowTitle}>Commit Hash: </Text>
           <Text style={{flex: 1}} >
             {item.commitHash}
           </Text>
         </View>
-        <View style={{flexDirection: "row"}}>
-          <Text>Commit message: </Text>
+        <View style={styles.rowContainer}>
+          <Text style={styles.rowTitle}>Commit message: </Text>
           <Text style={{flex: 1}}>
           {item.commitMessage}
         </Text>
         </View>
-        <View style={{flexDirection: "row"}}>
-          <Text>Author: </Text>
+        <View style={styles.rowContainer}>
+          <Text style={styles.rowTitle}>Author: </Text>
           <Text style={{flex: 1}}>
           {item.author}
         </Text>
@@ -57,6 +56,14 @@ function App() {
           </Text>
         </>
       );
+    }else if (data.length < 1){
+      return(
+        <>
+          <Text style={{ textAlign:'center'}}>
+            Press the button above to get the data.
+          </Text>
+        </>
+      );
     }
     else {
       return(
@@ -73,7 +80,7 @@ function App() {
     <>
       <SafeAreaView>
         <Button 
-          title="Make API call" 
+          title="Get Commit data" 
           onPress= {() => { 
               dispatch(setIsLoading(true));
               dispatch(getData());
@@ -88,3 +95,15 @@ function App() {
 };
 
 export default App;
+
+
+const styles = StyleSheet.create(
+  {
+    rowContainer: {
+      flexDirection:'row',
+    },
+    rowTitle: {
+      fontWeight: 'bold',
+    }
+  }
+);
