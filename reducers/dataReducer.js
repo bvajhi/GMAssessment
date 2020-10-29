@@ -1,7 +1,7 @@
 const initialState = {
     isLoading: false,
     isError: false, 
-    data: [],
+    dataArray: [],
 };
 const dataReducer = (state = initialState, action) => {
     switch(action.type) {

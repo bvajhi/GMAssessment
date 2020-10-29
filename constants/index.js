@@ -5,5 +5,3 @@ export default CONST = keyMirror({
 
 
 });
-
-// export const COUNTER_CHANGE = 'COUNTER_CHANGE'
