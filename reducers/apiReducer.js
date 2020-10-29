@@ -13,6 +13,13 @@ const dataReducer = (state = initialState, action) => {
                 isError: false,
                 dataArray: action.payload,
             }
+
+        case CONST.GET_CURRENT_REPO_COMMITS_FAIL:
+           return {
+                isLoading: false,
+                isError: true,
+                dataArray: [],
+            }
         default:
             return state;
     }

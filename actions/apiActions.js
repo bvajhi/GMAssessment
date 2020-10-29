@@ -1,6 +1,6 @@
 import CONST from '../constants';
 import { getCurrentRepoCommits } from '../api/api'
-import dataReducer from '../reducers/dataReducer';
+import dataReducer from '../reducers/apiReducer';
 
 
 export function getData (){
@@ -9,7 +9,12 @@ export function getData (){
 
     return dispatch => {
         apiPromise.then ( value => {
-                dispatch({type: CONST.GET_CURRENT_REPO_COMMITS, payload: value})
+                if (value.fail){
+                    dispatch({type: CONST.GET_CURRENT_REPO_COMMITS_FAIL,});
+                }
+                else{
+                    dispatch({type: CONST.GET_CURRENT_REPO_COMMITS, payload: value});
+                }
             }
         );
 

@@ -18,6 +18,9 @@ export function getCurrentRepoCommits() {
         .catch (
             error => {
                 console.log(error);
+                return {
+                    fail: true,
+                }
             }
         )
 
