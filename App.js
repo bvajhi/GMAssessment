@@ -12,7 +12,6 @@ import {getData, setIsLoading} from './actions/apiActions';
 
 import {useDispatch, useSelector} from 'react-redux';
 
-import { changeCount } from './actions/count'
 function App() {
   const dispatch = useDispatch();
   const didFail = useSelector (state => state.data.didFail);
