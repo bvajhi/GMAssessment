@@ -1,10 +1,11 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   Button,
 } from 'react-native';
+
+import { getCurrentRepoCommits } from './api/api'
 
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -21,7 +22,13 @@ function App() {
       <Button 
         title="increase count" 
         onPress= {() => { dispatch(changeCount(count+1)) }}
-        />
+      />
+
+      <Button 
+        title="Make API call" 
+        onPress= {() => { getCurrentRepoCommits();}}
+      />
+      
       </SafeAreaView>
     </>
   );
