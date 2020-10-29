@@ -22,6 +22,12 @@ function App() {
     return(
       <>
         <View style={styles.rowContainer}>
+          <Text style={styles.rowTitle}>Author: </Text>
+          <Text style={{flex: 1}}>
+          {item.author}
+        </Text>
+        </View>
+        <View style={styles.rowContainer}>
           <Text style={styles.rowTitle}>Commit Hash: </Text>
           <Text style={{flex: 1}} >
             {item.commitHash}
@@ -33,12 +39,7 @@ function App() {
           {item.commitMessage}
         </Text>
         </View>
-        <View style={styles.rowContainer}>
-          <Text style={styles.rowTitle}>Author: </Text>
-          <Text style={{flex: 1}}>
-          {item.author}
-        </Text>
-        </View>
+       
         <View style={{borderBottomWidth:1}}/>
       </>
     );
